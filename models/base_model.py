@@ -23,6 +23,7 @@ class BaseModel():
                     (item['updated_at'], time)
         if dict_found == 0:
             self.created_at = datetime.now()
+            self.updated_at = datetime.now()
             self.id = str(uuid.uuid4())
             from models.__init__ import storage
             storage.new(self)
