@@ -31,7 +31,9 @@ class FileStorage:
     def save(self):
         """Serialize __objects to the JSON file __file_path."""
         odict = FileStorage.__objects
-        objdict = {obj: odict[obj].to_dict() for obj in odict.keys()}
+        objdict = {}
+        for key, val in odict.items():
+            objdict[key] = val.to_dict()
         with open(FileStorage.__file_path, "w") as f:
             json.dump(objdict, f)
 
@@ -40,22 +42,22 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path) as f:
                 objdict = json.load(f)
-                for o in objdict.values():
-                    cls_name = o["__class__"]
-                    del o["__class__"]
-                    if cls_name == "Place":
-                        self.new(Place(**o))
-                    elif cls_name == "State":
-                        self.new(State(**o))
-                    elif cls_name == "City":
-                        self.new(City(**o))
-                    elif cls_name == "Amenity":
-                        self.new(Amenity(**o))
-                    elif cls_name == "Review":
-                        self.new(Review(**o))
-                    elif cls_name == "User":
-                        self.new(User(**o))
-                    elif cls_name == "BaseModel":
-                        self.new(BaseModel(**o))
+                for i, o in objdict.items():
+                    if i not in FileStorage.__objects:
+                        cls_name = o["__class__"]
+                        if cls_name == "Place":
+                            self.new(eval("Place(**o)"))
+                        elif cls_name == "State":
+                            self.new(eval("State(**o)"))
+                        elif cls_name == "City":
+                            self.new(eval("City(**o)"))
+                        elif cls_name == "Amenity":
+                            self.new(eval("Amenity(**o)"))
+                        elif cls_name == "Review":
+                            self.new(eval("Review(**o)"))
+                        elif cls_name == "User":
+                            self.new(eval("User(**o)"))
+                        elif cls_name == "BaseModel":
+                            self.new(eval("BaseModel(**o)"))
         except FileNotFoundError:
-            return
+            pass
