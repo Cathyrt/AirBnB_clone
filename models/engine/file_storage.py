@@ -43,6 +43,19 @@ class FileStorage:
                 for o in objdict.values():
                     cls_name = o["__class__"]
                     del o["__class__"]
-                    self.new(eval(cls_name)(**o))
+                    if cls_name == "Place":
+                        self.new(Place(**o))
+                    elif cls_name == "State":
+                        self.new(State(**o))
+                    elif cls_name == "City":
+                        self.new(City(**o))
+                    elif cls_name == "Amenity":
+                        self.new(Amenity(**o))
+                    elif cls_name == "Review":
+                        self.new(Review(**o))
+                    elif cls_name == "User":
+                        self.new(User(**o))
+                    elif cls_name == "BaseModel":
+                        self.new(BaseModel(**o))
         except FileNotFoundError:
             return

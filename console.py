@@ -16,6 +16,15 @@ class HBNBCommand(cmd.Cmd):
     """Contains the entry point of the command interpreter"""
 
     prompt = "(hbnb) "
+    all_classes = {
+        'BaseModel': BaseModel,
+        'User': User,
+        'State': State,
+        'City': City,
+        'Amenity': Amenity,
+        'Place': Place,
+        'Review': Review
+      }
 
     def do_EOF(self, line):
         """exit the program"""
