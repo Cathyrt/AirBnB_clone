@@ -4,7 +4,9 @@ BaseModel Module
 """
 from datetime import datetime
 import uuid
+from models.engine.file_storage import FileStorage
 
+storage = FileStorage()
 
 class BaseModel():
     """ BaseModel class """
