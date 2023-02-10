@@ -36,7 +36,7 @@ class BaseModel():
         from models.__init__ import storage
         storage.save()
 
-    def to_json(self):
+    def to_dict(self):
         """
         returns a dictionary containing all keys/values of __dict__
         of the instance + the class name in the key __class__
@@ -44,8 +44,8 @@ class BaseModel():
         newdict = self.__dict__.copy()
         newdict.update({'__class__': self.__class__.__name__})
         if hasattr(self, 'updated_at'):
-            newdict.update({'updated_at': str(self.updated_at)})
-        newdict.update({'created_at': str(self.created_at)})
+            newdict.update({'updated_at': str(self.updated_at.isoformat())})
+        newdict.update({'created_at': str(self.created_at.isoformat())})
         return newdict
 
     def __str__(self):
