@@ -13,20 +13,19 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         """ initializes instance attributes """
-        time = '%Y-%m-%d %H:%M:%S.%f'
+        time = '%Y-%m-%dT%H:%M:%S.%f'
         dict_found = 0
-        for item in args:
-            if type(item) is dict:
+        if kwargs:
+            for item in kwargs:
                 dict_found = 1
-                self.__dict__ = item
-                self.created_at = datetime.strptime(item['created_at'], time)
-                if hasattr(item, 'updated_at'):
-                    self.updated_at = datetime.strptime
-                    (item['updated_at'], time)
+                if item != '__class__':
+                    if item == 'created_at' or item == 'updated_at':
+                        kwargs[item] = datetime.strptime(kwargs[item], time)
+                    setattr(self, item, kwargs[item])
         if dict_found == 0:
+            self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            self.id = str(uuid.uuid4())
             from models.__init__ import storage
             storage.new(self)
 
