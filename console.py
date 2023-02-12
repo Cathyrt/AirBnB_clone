@@ -43,14 +43,13 @@ class HBNBCommand(cmd.Cmd):
         """Usage: create <class>
         Create a new class instance and print its id.
         """
-        argl = parse(arg)
-        if len(argl) == 0:
+        if not arg:
             print("** class name missing **")
-        elif argl[0] not in HBNBCommand.__classes:
+        elif arg not in HBNBCommand.all_classes:
             print("** class doesn't exist **")
         else:
-            print(eval(argl[0])().id)
-            storage.save()
+            print(eval(arg)().id)
+            eval(arg)().save()
 
     def do_show(self, arg):
         """Usage: show <class> <id> or <class>.show(<id>)
