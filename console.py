@@ -102,8 +102,15 @@ class HBNBCommand(cmd.Cmd):
             print("\n".join(objl))
 
     def default(self, arg):
-        """Usage: count <class> or <class>.count()
-        Retrieve the number of instances of a given class."""
+        """
+        Method called on an input line when command prefix isn't recognized.
+
+        Usage: <class>.all()
+        Retrieve all instances of a class
+
+        Usage: <class>.count()
+        Retrieve the number of instances of a given class.
+        """
         count = 0
         objdict = storage.all()
         line = arg.split('.')
@@ -113,6 +120,8 @@ class HBNBCommand(cmd.Cmd):
                 if obj[0] == line[0]:
                     count += 1
             print(count)
+        elif line[1] == 'all()':
+            self.do_all(line[0])
 
     def do_update(self, arg):
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
