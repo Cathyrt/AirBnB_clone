@@ -92,14 +92,14 @@ class HBNBCommand(cmd.Cmd):
         argl = arg.split()
         if len(argl) > 0 and argl[0] not in HBNBCommand.all_classes:
             print("** class doesn't exist **")
-            return
-        objl = []
-        for obj in storage.all().values():
-            if len(argl) > 0 and argl[0] == obj.__class__.__name__:
-                objl.append(obj.__str__())
-            elif len(argl) == 0:
-                objl.append(obj.__str__())
-        print("\n".join(objl))
+        else:
+            objl = []
+            for obj in storage.all().values():
+                if len(argl) > 0 and argl[0] == obj.__class__.__name__:
+                    objl.append(obj.__str__())
+                elif len(argl) == 0:
+                    objl.append(obj.__str__())
+            print("\n".join(objl))
 
     def do_count(self, arg):
         """Usage: count <class> or <class>.count()
