@@ -71,11 +71,11 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """Usage: destroy <class> <id> or <class>.destroy(<id>)
         Delete a class instance of a given id."""
-        argl = parse(arg)
+        argl = arg.split()
         objdict = storage.all()
-        if len(argl) == 0:
+        if len(arg) == 0:
             print("** class name missing **")
-        elif argl[0] not in HBNBCommand.__classes:
+        elif argl[0] not in HBNBCommand.all_classes:
             print("** class doesn't exist **")
         elif len(argl) == 1:
             print("** instance id missing **")
@@ -89,8 +89,8 @@ class HBNBCommand(cmd.Cmd):
         """Usage: all or all <class> or <class>.all()
         Display string representations of all instances of a given class.
         If no class is specified, displays all instantiated objects."""
-        argl = parse(arg)
-        if len(argl) > 0 and argl[0] not in HBNBCommand.__classes:
+        argl = arg.split()
+        if len(argl) > 0 and argl[0] not in HBNBCommand.all_classes:
             print("** class doesn't exist **")
         else:
             objl = []
@@ -107,13 +107,13 @@ class HBNBCommand(cmd.Cmd):
         <class>.update(<id>, <dictionary>)
         Update a class instance of a given id by adding or updating
         a given attribute key/value pair or dictionary."""
-        argl = parse(arg)
+        argl = arg.split()
         objdict = storage.all()
 
-        if len(argl) == 0:
+        if len(arg) == 0:
             print("** class name missing **")
             return False
-        if argl[0] not in HBNBCommand.__classes:
+        if argl[0] not in HBNBCommand.all_classes:
             print("** class doesn't exist **")
             return False
         if len(argl) == 1:
