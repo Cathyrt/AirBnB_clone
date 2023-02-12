@@ -101,16 +101,18 @@ class HBNBCommand(cmd.Cmd):
                     objl.append(obj.__str__())
             print("\n".join(objl))
 
-    def do_count(self, arg):
+    def default(self, arg):
         """Usage: count <class> or <class>.count()
         Retrieve the number of instances of a given class."""
         count = 0
-        dict = storage.all()
-        for key in dict.keys():
-            obj = key.split('.')
-            if obj[0] == args:
-                count += 1
-        print(count)
+        objdict = storage.all()
+        line = arg.split('.')
+        if line[1] == 'count()':
+            for key in objdict.keys():
+                obj = key.split('.')
+                if obj[0] == line[0]:
+                    count += 1
+            print(count)
 
     def do_update(self, arg):
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
