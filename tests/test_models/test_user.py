@@ -6,7 +6,7 @@ import unittest
 from models.user import User
 
 
-class UserTest(TestCase):
+class UserTest(unittest.TestCase):
     """ test case class for User class """
     def test_type(self):
         """ checks the type of the attribute """
