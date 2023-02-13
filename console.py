@@ -129,14 +129,9 @@ class HBNBCommand(cmd.Cmd):
             print(count)
         elif line[1] == 'all()':
             self.do_all(line[0])
-        elif line[1][:5] == 'show()':
+        elif line[1][:5] == 'show(':
             id = line[1][5:-1]
             self.do_show(line[0] + '' + id)
-        elif line[1][:8] == 'destroy()':
-            id = line[1][8:-1]
-            self.do_destroy(line[0] + ' ' + id)
-        else:
-            print("** invalid syntax **")
 
     def do_update(self, arg):
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
