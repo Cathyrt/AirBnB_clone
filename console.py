@@ -110,6 +110,9 @@ class HBNBCommand(cmd.Cmd):
 
         Usage: <class>.count()
         Retrieve the number of instances of a given class.
+
+        Usage: <class>.show(<id>)
+        Retrieve an instance of a given class based on its ID.
         """
         count = 0
         objdict = storage.all()
