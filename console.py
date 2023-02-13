@@ -116,6 +116,8 @@ class HBNBCommand(cmd.Cmd):
 
         Usage: <class>.destroy(<id>)
         Destroy an instance based on his ID
+        Usage: <class>.update(<id>, <dictionary representation>)
+        Update an instance based on his ID with a dictionary representation
         """
         count = 0
         objdict = storage.all()
@@ -136,6 +138,13 @@ class HBNBCommand(cmd.Cmd):
             cmid = line[1].split('("')
             cmid[1] = cmid[1].replace('")', '')
             self.do_destroy("{} {}".format(line[0], cmid[1]))
+        elif line[1].startswith('update'):
+            cmid = line[1].split('({"')
+            if not cmid[1].endswith('"})'):
+                print("Error: Incorrect dictionary representation for update.")
+                return
+            cmid[1] = cmid[1].replace('"})', '')
+            self.do_update("{} {} {{{}}}".format(line[0], cmid[0], cmid[1]))
 
     def do_update(self, arg):
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
