@@ -16,7 +16,7 @@ class BaseModelTest(TestCase):
         self.assertTrue(hasattr(bm, "__class__"))
         self.assertTrue(hasattr(bm, "id"))
         self.assertTrue(hasattr(bm, "created_at"))
-        self.assertFalse(hasattr(bm, "updated_at"))
+        self.assertTrue(hasattr(bm, "updated_at"))
 
     def test_init_with_args(self):
         """ testing __init__ method when args are given """
