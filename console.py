@@ -113,6 +113,9 @@ class HBNBCommand(cmd.Cmd):
 
         Usage: <class>.show(<id>)
         Retrieve an instance of a given class based on its ID.
+
+        Usage: <class>.destroy(<id>)
+        Destroy an instance based on his ID
         """
         count = 0
         objdict = storage.all()
@@ -125,6 +128,14 @@ class HBNBCommand(cmd.Cmd):
             print(count)
         elif line[1] == 'all()':
             self.do_all(line[0])
+        elif line[1].startswith('show'):
+            cmid = line[1].split('("')
+            cmid[1] = cmid[1].replace('")', '')
+            self.do_show("{} {}".format(line[0], cmid[1]))
+        elif line[1].startswith('destroy'):
+            cmid = line[1].split('("')
+            cmid[1] = cmid[1].replace('")', '')
+            self.do_destroy("{} {}".format(line[0], cmid[1]))
 
     def do_update(self, arg):
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
