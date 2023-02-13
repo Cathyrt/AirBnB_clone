@@ -123,6 +123,9 @@ class HBNBCommand(cmd.Cmd):
                 if obj[0] == line[0]:
                     count += 1
             print(count)
+        elif line[1].startswith('show('):
+            id = line[1][5:-1]
+            self.do_show(line[0], id)
         elif line[1] == 'all()':
             self.do_all(line[0])
 
