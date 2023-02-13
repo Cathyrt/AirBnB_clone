@@ -8,7 +8,7 @@ from models.engine.file_storage import FileStorage
 import uuid
 
 
-class BaseModelTest(unittest.TestCase):
+class TestBaseModel(unittest.TestCase):
     """ test case class for BaseModel class """
     def test_init(self):
         """ testing __init__ method """
