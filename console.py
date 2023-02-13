@@ -135,6 +135,8 @@ class HBNBCommand(cmd.Cmd):
         elif line[1][:8] == 'destroy()':
             id = line[1][8:-1]
             self.do_destroy(line[0] + ' ' + id)
+        else:
+            print("** invalid syntax **")
 
     def do_update(self, arg):
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
