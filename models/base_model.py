@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-BaseModel Module
-"""
+"""Defines the BaseModel class."""
 from datetime import datetime
 import uuid
 import models
@@ -12,16 +10,13 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         """ initializes instance attributes """
-        time = '%Y-%m-%dT%H:%M:%S.%f'
-        dict_found = 0
         if kwargs:
-            for item in kwargs:
-                dict_found = 1
-                if item != '__class__':
-                    if item == 'created_at' or item == 'updated_at':
-                        kwargs[item] = datetime.strptime(kwargs[item], time)
-                    setattr(self, item, kwargs[item])
-        if dict_found == 0:
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                if key != "__class__":
+                    setattr(self, key, value)
+        else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
