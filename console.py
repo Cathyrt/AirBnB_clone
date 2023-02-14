@@ -164,8 +164,11 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
             return False
         if len(argl) == 3:
-            print("** value missing **")
-            return False
+            try:
+                type(eval(argl[2])) != dict
+            except NameError:
+                print("** value missing **")
+                return False
 
         if len(argl) == 4:
             obj = objdict["{}.{}".format(argl[0], argl[1])]
