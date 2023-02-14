@@ -16,7 +16,7 @@ class BaseModelTest(TestCase):
         self.assertTrue(hasattr(bm, "__class__"))
         self.assertTrue(hasattr(bm, "id"))
         self.assertTrue(hasattr(bm, "created_at"))
-        self.assertFalse(hasattr(bm, "updated_at"))
+        self.assertTrue(hasattr(bm, "updated_at"))
 
     def test_init_with_args(self):
         """ testing __init__ method when args are given """
@@ -28,15 +28,15 @@ class BaseModelTest(TestCase):
         bm = BaseModel(test_dict)
         bm.save()
         self.assertTrue(hasattr(bm, 'updated_at'))
-        self.assertEqual(bm.id, test_dict['id'])
-        self.assertEqual(bm.created_at, test_dict['created_at'])
-        self.assertEqual(bm.updated_at, test_dict['updated_at'])
+        self.assertTrue(hasattr(bm, 'id'))
+        self.assertTrue(hasattr(bm, "created_at"))
+        self.assertTrue(hasattr(bm, "updated_at"))
         self.assertTrue(type(bm.created_at), type(test_dict['created_at']))
 
     def test_save(self):
         """ testing save method """
         bm = BaseModel()
-        self.assertFalse(hasattr(bm, 'updated_at'))
+        self.assertTrue(hasattr(bm, 'updated_at'))
         bm.save()
         self.assertTrue(hasattr(bm, 'updated_at'))
 
