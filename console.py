@@ -116,6 +116,8 @@ class HBNBCommand(cmd.Cmd):
 
         Usage: <class>.destroy(<id>)
         Destroy an instance based on his ID
+        Usage: <class>.update(<id>, <dictionary representation>)
+        Update an instance based on his ID with a dictionary representation
         """
         count = 0
         objdict = storage.all()

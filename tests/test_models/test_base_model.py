@@ -1,14 +1,14 @@
 #!/usr/bin/python3
-"""
-unit test for BaseModel class
-"""
-from unittest import TestCase
+"""Defines classes for models/base_model.py. """
+import unittest
 from datetime import datetime
 from models.base_model import BaseModel
+from models import storage
+from models.engine.file_storage import FileStorage
 import uuid
 
 
-class BaseModelTest(TestCase):
+class TestBaseModel(unittest.TestCase):
     """ test case class for BaseModel class """
     def test_init(self):
         """ testing __init__ method """
