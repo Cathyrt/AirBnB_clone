@@ -7,18 +7,18 @@
 ---
 Run the HBnB console.py file in your terminal:
 
-'''
+```
 $ ./console.py
 Welcom to hbnb!
 
 (hbnb)
-'''
+```
 
 The console has a series of available commands:
 
 * help: Without an argument displays all commands that are availabe. With a command as argument; displays documentation on that command. Usage: help [command]
 
-'''
+```
 (hbnb) help
 
 Documented commands (type help <topic>):
@@ -28,47 +28,47 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb) help quit
 exit the console
 (hbnb)
-'''
+```
 
 * create: Creates a new instance of given class. Prints the id of the new instance. Usage: create ClassName
 
-'''
+```
 (hbnb) create User
 ec6c5aa4-ebd3-11e6-864c-08002745538c
-'''
+```
 
 * all: Displays all instances that currently exist. Optional class name will display all instances of a given class. Usage: all [ClassName].
 
-'''
+```
 (hbnb) all User
 [User] (ec6c5aa4-ebd3-11e6-864c-08002745538c) {'id': 'ec6c5aa4-ebd3-11e6-864c-080027
 45538c', 'email': 'airbnb@holbertonshool.com', '__class__': 'User', 'last_name': 'Ho
 lberton', 'created_at': datetime.datetime(2017, 1, 15, 18, 50, 11, 853163), 'first_n
 ame': 'Betty', 'updated_at': datetime.datetime(2017, 1, 15, 18, 50, 11, 853222), 'pa
 ssword': 'root'}
-'''
+```
 
 * show: Displays an instance based on given class name and id. Usage: show ClassName ID
 
-'''
+```
 (hbnb) show User ec6c5aa4-ebd3-11e6-864c-08002745538c
 [User] (ec6c5aa4-ebd3-11e6-864c-08002745538c) {'id': 'ec6c5aa4-ebd3-11e6-864c-080027
 45538c', 'email': 'airbnb@holbertonshool.com', '__class__': 'User', 'last_name':'Hol
 berton', 'created_at': datetime.datetime(2017, 1, 15, 18, 50, 11, 853163), 'first_na
 me': 'Betty', 'updated_at': datetime.datetime(2017, 1, 15, 18, 50, 11, 853222), 'pas
 sword': 'root'}
-'''
+```
 
 * destroy: Destroys an instance based on given class name and id. Usage: destroy ClassName ID
 
-'''
+```
 (hbnb) destroy User ec6c5aa4-ebd3-11e6-864c-08002745538c
 (hbnb) show User ec6c5aa4-ebd3-11e6-864c-08002745538c
-'''
+```
 
 * update: Updates an instance based on class name and id by adding or updating the attribute given with the given value. Usage: update ClassName ID AttributeName AttributeValue
 
-'''
+```
 (hbnb) create User
 edaab9ce-ebd3-11e6-a4af-08002745538c
 (hbnb) show User edaab9ce-ebd3-11e6-a4af-08002745538c
@@ -82,7 +82,7 @@ ord': 'root', 'updated_at': datetime.datetime(2017, 1, 15, 18, 50, 13, 939585)}
 45538c', 'email': 'airbnb@holbertonshool.com', 'last_name': 'Holberton', 'created_at
 ': datetime.datetime(2017, 1, 15, 18, 50, 13, 939549), 'first_name': 'Johnny', 'pass
 word': 'root', 'updated_at': datetime.datetime(2017, 1, 15, 18, 50, 13, 939585)}
-'''
+```
 
 ## Files & Directories
 ---
